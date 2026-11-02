@@ -1,0 +1,38 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
+}
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); line-height: 1.2; }
+p { margin: 0; }
+a { color: var(--orange); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, input, select, textarea { font-family: inherit; }
+img, svg { display: block; max-width: 100%; }
+::selection { background: var(--orange); color: #fff; }
+
+.muted { color: var(--text-2); }
+.num { font-family: var(--font-display); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.num--income { color: var(--green); text-shadow: 0 0 18px var(--green-glow); }
+.num--expense { color: var(--red); text-shadow: 0 0 18px var(--red-glow); }
+.num--insight { color: var(--purple); text-shadow: 0 0 18px var(--purple-glow); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.stack { display: grid; gap: 16px; }
+.row { display: flex; align-items: center; gap: 12px; }
+.row--between { justify-content: space-between; }
+.row--wrap { flex-wrap: wrap; }
+.grid-cards { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.grid-2 { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.page { padding: 20px; max-width: 1280px; margin: 0 auto; }
+.page__title { font-size: clamp(1.4rem, 4vw, 1.9rem); font-weight: 700; }
+.badge { display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 99px; font-size: 0.75rem; font-weight: 600; color: var(--c, var(--text-2)); background: var(--bg); box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light); }
+.badge--manual { --c: var(--purple); }
