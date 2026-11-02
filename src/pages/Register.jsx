@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Field, { PasswordField, PasswordStrength } from '../components/Field.jsx';
 import Button from '../components/Button.jsx';
 import Icon from '../components/Icon.jsx';
+import GoogleButton from '../components/GoogleButton.jsx';
 import { signUp, setRemember, friendlyAuthError } from '../services/auth.js';
 import { isEmail, isStrongEnough } from '../utils/validators.js';
 
@@ -80,6 +81,7 @@ export default function Register() {
           Create account
         </Button>
       </form>
+      <GoogleButton />
       <p className="auth-switch">
         Already have an account? <Link to="/login">Log in</Link>
       </p>
