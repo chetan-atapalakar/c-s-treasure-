@@ -4,6 +4,7 @@ import Field, { PasswordField } from '../components/Field.jsx';
 import Button from '../components/Button.jsx';
 import Icon from '../components/Icon.jsx';
 import GoogleButton from '../components/GoogleButton.jsx';
+import PhoneLogin from '../components/PhoneLogin.jsx';
 import { signIn, friendlyAuthError } from '../services/auth.js';
 import { isEmail } from '../utils/validators.js';
 
@@ -65,6 +66,7 @@ export default function Login() {
         </Button>
       </form>
       <GoogleButton />
+      <PhoneLogin />
       <p className="auth-switch">
         New here? <Link to="/register">Create an account</Link>
       </p>
