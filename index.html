@@ -5,6 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#171923" />
+    <meta name="description" content="CüS Treasure. Build wealth. Track progress. Own tomorrow." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -12,73 +13,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module">
-      import React from 'react';
-      import ReactDOM from 'react-dom/client';
-      import { BrowserRouter, useNavigate } from 'react-router-dom';
-      import { Capacitor } from '@capacitor/core';
-      import { App as CapApp } from '@capacitor/app';
-      import { StatusBar, Style } from '@capacitor/status-bar';
-      import { SplashScreen } from '@capacitor/splash-screen';
-      import App from '/src/App.jsx';
-      import '/src/styles/theme.css';
-      import '/src/styles/global.css';
-      import '/src/styles/neumorphism.css';
-      import '/src/styles/animations.css';
-      import '/src/styles/responsive.css';
-
-      const h = React.createElement;
-      const ROOT_PATHS = ['/dashboard', '/login', '/welcome'];
-
-      function NativeBridge() {
-        const navigate = useNavigate();
-        React.useEffect(() => {
-          if (!Capacitor.isNativePlatform()) return undefined;
-          let handle;
-          let gone = false;
-          StatusBar.setStyle({ style: Style.Dark }).catch(() => {});
-          StatusBar.setBackgroundColor({ color: '#171923' }).catch(() => {});
-          SplashScreen.hide({ fadeOutDuration: 250 }).catch(() => {});
-          CapApp.addListener('backButton', ({ canGoBack }) => {
-            if (document.querySelector('.modal-backdrop')) {
-              document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
-            } else if (ROOT_PATHS.includes(window.location.pathname) || !canGoBack) {
-              CapApp.exitApp();
-            } else {
-              navigate(-1);
-            }
-          }).then((hd) => (gone ? hd.remove() : (handle = hd)));
-          return () => {
-            gone = true;
-            if (handle) handle.remove();
-          };
-        }, [navigate]);
-        return null;
-      }
-
-      function OfflineBanner() {
-        const [online, setOnline] = React.useState(navigator.onLine);
-        React.useEffect(() => {
-          const up = () => setOnline(true);
-          const down = () => setOnline(false);
-          window.addEventListener('online', up);
-          window.addEventListener('offline', down);
-          return () => {
-            window.removeEventListener('online', up);
-            window.removeEventListener('offline', down);
-          };
-        }, []);
-        if (online) return null;
-        return h('div', {
-          role: 'status',
-          style: { position: 'fixed', zIndex: 100, left: 0, right: 0, top: 0, padding: '8px 16px', textAlign: 'center', fontSize: '0.8rem', fontWeight: 600, color: '#fff', background: '#EF4444' },
-        }, 'You are offline. Changes cannot be saved until you reconnect.');
-      }
-
-      ReactDOM.createRoot(document.getElementById('root')).render(
-        h(React.StrictMode, null,
-          h(BrowserRouter, null, h(NativeBridge), h(OfflineBanner), h(App)))
-      );
-    </script>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
